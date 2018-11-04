@@ -2,13 +2,34 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Chamada"
-             x:Class="Chamada.MainPage">
+             xmlns:controls="clr-namespace:SuaveControls.Views;assembly=SuaveControls.FloatingActionButton"
+             x:Class="Chamada.MainPage"
+             Title="Turmas">    
+    <RelativeLayout
+        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=-50}"
+        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}">
+        <ListView x:Name="groupList" HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="10" Spacing="0">
+                            <Label Text="{Binding Name}" TextColor="#3D0A0A" FontSize="18"/> <!--nome da turma-->
+                            <StackLayout Orientation="Horizontal" Spacing="0">
+                                <Label Text="{Binding FormattedWeekDays}" TextColor="Gray"/> <!--Dias da Semana-->
+                                <Label Text="{Binding Time, StringFormat='{0:HH:mm}'}" TextColor="Gray" HorizontalOptions="CenterAndExpand"/> <!--Horário formatado-->
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
 
-    <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
-    </StackLayout>
+        <controls:FloatingActionButton x:Name="FAB" 
+                                        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=-100}"
+                                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=-100}"
+                                        HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                                    HeightRequest="100" WidthRequest="90"
+                                    Image="plus.png" ButtonColor="#3D0A0A"/>        
+    </RelativeLayout>
 
 </ContentPage>

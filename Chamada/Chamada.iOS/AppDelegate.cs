@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using SuaveControls.FloatingActionButton.iOS.Renderers;
 using UIKit;
 
 namespace Chamada.iOS
@@ -23,6 +24,8 @@ namespace Chamada.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+
+            FloatingActionButtonRenderer.InitRenderer();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
