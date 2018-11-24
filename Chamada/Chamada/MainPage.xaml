@@ -4,32 +4,35 @@
              xmlns:local="clr-namespace:Chamada"
              xmlns:controls="clr-namespace:SuaveControls.Views;assembly=SuaveControls.FloatingActionButton"
              x:Class="Chamada.MainPage"
-             Title="Turmas">    
-    <RelativeLayout
-        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=-50}"
-        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}">
-        <ListView x:Name="groupList" HasUnevenRows="True">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout Padding="10" Spacing="0">
-                            <Label Text="{Binding Name}" TextColor="#3D0A0A" FontSize="18"/> <!--nome da turma-->
-                            <StackLayout Orientation="Horizontal" Spacing="0">
-                                <Label Text="{Binding FormattedWeekDays}" TextColor="Gray"/> <!--Dias da Semana-->
-                                <Label Text="{Binding Time, StringFormat='{0:HH:mm}'}" TextColor="Gray" HorizontalOptions="CenterAndExpand"/> <!--Horário formatado-->
+             Title="Turmas">
+    <ScrollView>
+        <RelativeLayout
+            RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=-50}"
+            RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}">
+            <ListView x:Name="groupList" HasUnevenRows="True" ItemTapped="groupList_ItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10" Spacing="0">
+                                <Label Text="{Binding Name}" TextColor="#3D0A0A" FontSize="18"/> <!--nome da turma-->
+                                <StackLayout Orientation="Horizontal" Spacing="0">
+                                    <Label Text="{Binding Frequency}" TextColor="Gray"/> <!--Dias da Semana-->
+                                    <Label Text="{Binding StartTime,  StringFormat='{}{0:hh\\:mm}'}" TextColor="Gray" HorizontalOptions="EndAndExpand"/><!--Horário de Inicio-->
+                                    <Label Text=" - "/>
+                                    <Label Text="{Binding FinishTime,  StringFormat='{}{0:hh\\:mm}'}" TextColor="Gray" HorizontalOptions="StartAndExpand"/><!--Horário de Inicio-->                               
+                                </StackLayout>
                             </StackLayout>
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
 
-        <controls:FloatingActionButton x:Name="FAB" 
-                                        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=-100}"
-                                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=-100}"
-                                        HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
-                                    HeightRequest="100" WidthRequest="90"
-                                    Image="plus.png" ButtonColor="#3D0A0A"/>        
-    </RelativeLayout>
-
+            <controls:FloatingActionButton x:Name="FAB" 
+                                            RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=-100}"
+                                            RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=-100}"
+                                            HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                                        HeightRequest="100" WidthRequest="90" Clicked="FAB_Clicked"
+                                        Image="plus.png" ButtonColor="#3D0A0A"/>     
+        </RelativeLayout>
+    </ScrollView>
 </ContentPage>

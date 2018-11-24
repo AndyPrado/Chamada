@@ -5,6 +5,9 @@ using System.Linq;
 using Foundation;
 using SuaveControls.FloatingActionButton.iOS.Renderers;
 using UIKit;
+using Xfx;
+
+
 
 namespace Chamada.iOS
 {
@@ -23,9 +26,11 @@ namespace Chamada.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            XfxControls.Init();
             global::Xamarin.Forms.Forms.Init();
 
             FloatingActionButtonRenderer.InitRenderer();
+            
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
