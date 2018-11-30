@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using SQLite;
+﻿using SQLite;
 
 namespace Chamada.Database
 {
-   public interface ISQLiteDB
+    public interface ISQLiteDb
     {
         SQLiteAsyncConnection GetConnection();
     }

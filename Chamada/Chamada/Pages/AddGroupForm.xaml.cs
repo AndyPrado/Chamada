@@ -2,18 +2,13 @@
 using Chamada.Models;
 using SQLite;
 using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Chamada.Pages
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
+    [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class AddGroupForm : ContentPage
 	{
         SQLiteAsyncConnection _connection;
@@ -24,7 +19,7 @@ namespace Chamada.Pages
 		{
 			InitializeComponent ();
 
-            _connection = DependencyService.Get<ISQLiteDB>().GetConnection();
+            _connection = DependencyService.Get<ISQLiteDb>().GetConnection();
             _group = group;
 		}
 
@@ -42,8 +37,8 @@ namespace Chamada.Pages
 
             _group.Name = NameEntry.Text;
             _group.Frequency = _frequency;
-            _group.StartTime = string.Format("{0:00}:{1:00}", startTime.Hours, startTime.Minutes);
-            _group.FinishTime = string.Format("{0:00}:{1:00}", finishTime.Hours, finishTime.Minutes);            
+            _group.StartTime = new DateTime(startTime.Ticks);
+            _group.FinishTime = new DateTime(finishTime.Ticks);             
 
             await _connection.InsertAsync(_group);
             

@@ -2,11 +2,7 @@
 using Chamada.Models;
 using SQLite;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace Chamada
@@ -14,13 +10,12 @@ namespace Chamada
     public partial class MainPage : ContentPage
     {
         private SQLiteAsyncConnection _connection;
-        public static ObservableCollection<Group> _groups;       
+        public ObservableCollection<Group> _groups { get; set; }
 
         public MainPage()
         {
             InitializeComponent();
-            _connection = DependencyService.Get<ISQLiteDB>().GetConnection();
-                        
+            _connection = DependencyService.Get<ISQLiteDb>().GetConnection();                        
         }
        
         protected override async void OnAppearing()
@@ -43,6 +38,7 @@ namespace Chamada
 
             Group tappedGroup = (Group)((ListView)sender).SelectedItem;
             Navigation.PushAsync(new Pages.GroupPage(tappedGroup));
+
         }
     }
 }

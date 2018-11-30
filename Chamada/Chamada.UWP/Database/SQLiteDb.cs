@@ -13,7 +13,7 @@ using Xamarin.Forms;
 
 namespace Chamada.UWP.Database
 {
-    class SQLiteDb : ISQLiteDB
+    class SQLiteDb : ISQLiteDb
     {
         public SQLiteAsyncConnection GetConnection()
         {

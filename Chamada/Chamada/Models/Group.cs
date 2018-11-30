@@ -14,7 +14,7 @@ namespace Chamada.Models
 
         public string Name { get; set; }
         public string Frequency { get; set; }        
-        public string StartTime { get; set; }
-        public string FinishTime { get; set; }        
+        public DateTime StartTime { get; set; }
+        public DateTime FinishTime { get; set; }        
     }
 }

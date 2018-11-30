@@ -1,20 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using Chamada.Database;
+﻿using Chamada.Database;
 using Chamada.iOS.Database;
-using Foundation;
 using SQLite;
-using UIKit;
+using System.IO;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(SQLiteDb))]
 
 namespace Chamada.iOS.Database
 {
-    class SQLiteDb : ISQLiteDB
+    class SQLiteDb : ISQLiteDb
     {
         public SQLiteAsyncConnection GetConnection()
         {
