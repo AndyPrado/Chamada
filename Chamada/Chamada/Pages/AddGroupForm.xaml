@@ -36,13 +36,15 @@
                         <StackLayout HorizontalOptions="StartAndExpand" Margin="10,0,0,30">
                             <Label x:Name="StartTimeLabel" Text="Start Time" TextColor="#3D0A0A"
                        HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
-                            <TimePicker x:Name="StartTime" HorizontalOptions="FillAndExpand" VerticalOptions="Start" />
+                            <TimePicker x:Name="StartTime" HorizontalOptions="FillAndExpand" 
+                                        Format="HH:mm" Time="12:00" VerticalOptions="Start" />
                         </StackLayout>
 
                         <StackLayout HorizontalOptions="StartAndExpand" Margin="20,0,0,30">
                             <Label x:Name="FinishTimeLabel" Text="Finish Time" TextColor="#3D0A0A" 
                        HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
-                            <TimePicker x:Name="FinishTime" HorizontalOptions="FillAndExpand" VerticalOptions="Start"/>
+                            <TimePicker x:Name="FinishTime" HorizontalOptions="FillAndExpand" 
+                                        Format="HH:mm" Time="12:00" VerticalOptions="Start"/>
                         </StackLayout>
                     </StackLayout>
                 </StackLayout>

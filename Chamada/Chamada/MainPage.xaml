@@ -20,10 +20,10 @@
                                 <StackLayout Orientation="Horizontal" Spacing="0">
                                     <Label Text="{Binding Frequency}" TextColor="Gray"/>
                                     <!--Dias da Semana-->
-                                    <Label Text="{Binding StartTime,  StringFormat='{}{0:hh\\:mm}'}" TextColor="Gray" HorizontalOptions="EndAndExpand"/>
+                                    <Label Text="{Binding StartTime,  StringFormat='{}{0:HH\\:mm}'}" TextColor="Gray" HorizontalOptions="EndAndExpand"/>
                                     <!--Horário de Inicio-->
                                     <Label Text=" - "/>
-                                    <Label Text="{Binding FinishTime,  StringFormat='{}{0:hh\\:mm}'}" TextColor="Gray" HorizontalOptions="StartAndExpand"/>
+                                    <Label Text="{Binding FinishTime,  StringFormat='{}{0:HH\\:mm}'}" TextColor="Gray" HorizontalOptions="StartAndExpand"/>
                                     <!--Horário de Inicio-->
                                 </StackLayout>
                             </StackLayout>

@@ -9,9 +9,10 @@ namespace Chamada.Models
     [Table("Registers")]
     public class Register
     {
+        [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         public int GroupId { get; set; }
-        public DateTime Day { get; set; }
-        public ObservableCollection<Student> Students { get; set; }    
+        public string StudentId { get; set; }
+        public DateTime Day { get; set; }            
     }
 }

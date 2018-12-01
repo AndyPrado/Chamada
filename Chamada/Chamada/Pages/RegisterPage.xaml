@@ -1,13 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:SuaveControls.Views;assembly=SuaveControls.FloatingActionButton"
              x:Class="Chamada.Pages.RegisterPage" Title="Register">
-    
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+
+    <ScrollView>
+        <RelativeLayout
+            RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=-50}"
+            RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}">
+            <ListView x:Name="RegisterList" HasUnevenRows="True" 
+                      ItemTapped="RegisterList_ItemTapped" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>                            
+                            <StackLayout Orientation="Horizontal" Spacing="0">
+                                <Label Text="Dia " TextColor="#3D0A0A" FontSize="18"/>
+                                <Label Text="{Binding Date, StringFormat='{}{0:dd/MM}'}" TextColor="#3D0A0A" FontSize="18"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <controls:FloatingActionButton x:Name="FAB" 
+                                            RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=-90}"
+                                            RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=-120}"
+                                            HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                                        HeightRequest="100" WidthRequest="90" Clicked="FAB_Clicked"
+                                        Image="plus.png" ButtonColor="#3D0A0A"/>
+        </RelativeLayout>
+    </ScrollView>
 </ContentPage>
