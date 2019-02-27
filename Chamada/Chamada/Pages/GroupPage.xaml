@@ -4,8 +4,7 @@
             xmlns:nav="clr-namespace:Chamada.Pages"
             x:Class="Chamada.Pages.GroupPage">
     <TabbedPage.ToolbarItems>
-        <ToolbarItem x:Name="delete" Icon="delete.png" Clicked="delete_Clicked" />
-        <ToolbarItem x:Name="edit" Icon="edit.png"  Clicked="edit_Clicked"/>
+       
     </TabbedPage.ToolbarItems>
 
 </TabbedPage>

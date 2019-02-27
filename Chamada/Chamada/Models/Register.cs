@@ -12,7 +12,12 @@ namespace Chamada.Models
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         public int GroupId { get; set; }
-        public string StudentId { get; set; }
-        public DateTime Day { get; set; }            
+        public string Classwork { get; set; }
+        public string ECampus { get; set; }
+        public string Homework { get; set; }
+        public string AbsentStudents { get; set; }
+        public DateTime Day { get; set; }
     }
+
+
 }

@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             x:Class="Chamada.Pages.EditRegisterPage"
+             Title="Edit the Register"
+             >
+    <ContentPage.Content>
+        <StackLayout Margin="10">
+            <StackLayout Orientation="Horizontal">
+                <Label TextColor="#3D0A0A" Text="Date: " HorizontalOptions="Start" VerticalOptions="CenterAndExpand"/>
+                <DatePicker x:Name="dpClassDate" Format="dd/MMM" TextColor="#3D0A0A" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
+            </StackLayout>
+            <Label Text="Classwork" TextColor="#3D0A0A" FontSize="Small"/>
+            <controls:ExtendedEditor x:Name="editorClasswork" AutoSize="TextChanges"  />
+            <Label Text="E-campus" TextColor="#3D0A0A" FontSize="Small"/>
+            <controls:ExtendedEditor x:Name="editorECampus" AutoSize="TextChanges"  />
+            <Label Text="Homework" TextColor="#3D0A0A" FontSize="Small"/>
+            <controls:ExtendedEditor x:Name="editorHomework" AutoSize="TextChanges"  />
+            <Label Text="Absent Students" TextColor="#3D0A0A" FontSize="Small"/>
+            <ScrollView>
+                <ListView x:Name="lvStudentsRegister" HasUnevenRows="True">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding Name}"/>
+                                    <controls:CheckBox HorizontalOptions="EndAndExpand" CheckedChanged="OnSelection" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollView>
+
+            <Button 
+                x:Name="btnCSave" HorizontalOptions="FillAndExpand"
+                Text="Save" TextColor="White" BorderColor="Transparent" BackgroundColor="#3D0A0A"
+                Clicked="btnSave_Clicked" />
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

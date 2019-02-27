@@ -131,6 +131,8 @@
     <Content Include="Assets\Wide310x150Logo.scale-100.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
+    <AndroidResource Include="black_delete.png" />
+    <AndroidResource Include="black_edit.png" />
     <Content Include="close.png" />
     <Content Include="delete.png" />
     <Content Include="edit.png" />

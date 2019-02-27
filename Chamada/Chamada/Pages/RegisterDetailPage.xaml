@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Chamada.Pages.RegisterDetailPage">
+    <ContentPage.Content>
+        <StackLayout>
+            
+            <StackLayout Margin="10">
+                <Label Text="Classwork:" TextColor="#3D0A0A" FontSize="14" FontAttributes="Bold"/>
+                <Label x:Name="lblClasswork" Text=" " VerticalOptions="Start" TextColor="DarkRed" FontSize="18"/>
+                <Label Text="E-Campus:" TextColor="#3D0A0A" FontSize="14" FontAttributes="Bold"/>
+                <Label x:Name="lbleCampus" Text=" " VerticalOptions="Start" TextColor="DarkRed" FontSize="18"/>
+                <Label Text="Homework:" TextColor="#3D0A0A" FontSize="14" FontAttributes="Bold"/>
+                <Label x:Name="lblHomework" Text=" " VerticalOptions="Start" TextColor="DarkRed" FontSize="18"/>
+                <Label Text="Absent Students:" TextColor="#3D0A0A" FontSize="14" FontAttributes="Bold"/>
+            </StackLayout>
+            <StackLayout x:Name="SLAbsentStudents">
+                
+            </StackLayout>
+            
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,0">
+                <Button x:Name="btnEdit" Text="Edit" Clicked="btnEdit_Clicked"
+                        HorizontalOptions="FillAndExpand" BackgroundColor="#3D0A0A" TextColor="White"/>
+                <Button x:Name="btnDelete" Text="Delete" Clicked="btnDelete_Clicked" 
+                        HorizontalOptions="FillAndExpand" BackgroundColor="#3D0A0A" TextColor="White"/>
+            </StackLayout>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

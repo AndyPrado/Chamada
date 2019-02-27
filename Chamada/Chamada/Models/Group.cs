@@ -11,7 +11,6 @@ namespace Chamada.Models
 
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
-
         public string Name { get; set; }
         public string Frequency { get; set; }        
         public DateTime StartTime { get; set; }

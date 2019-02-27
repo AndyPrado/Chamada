@@ -3,31 +3,34 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:SuaveControls.Views;assembly=SuaveControls.FloatingActionButton"
              x:Class="Chamada.Pages.RegisterPage" Title="Register">
-
-    <ScrollView>
-        <RelativeLayout
+    <RelativeLayout
             RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=-50}"
             RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}">
-            <ListView x:Name="RegisterList" HasUnevenRows="True" 
-                      ItemTapped="RegisterList_ItemTapped" >
+        <ScrollView>
+            <ListView x:Name="RegisterList" 
+                      ItemTapped="RegisterList_ItemTapped" Margin="10,0">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>                            
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem  Clicked="OnEdit" CommandParameter="{Binding .}" Text="Edit"/>
+                                <MenuItem  Clicked="OnDelete" CommandParameter="{Binding .}" IsDestructive="True" Text="Delete"/>
+                            </ViewCell.ContextActions>
                             <StackLayout Orientation="Horizontal" Spacing="0">
-                                <Label Text="Dia " TextColor="#3D0A0A" FontSize="18"/>
-                                <Label Text="{Binding Date, StringFormat='{}{0:dd/MM}'}" TextColor="#3D0A0A" FontSize="18"/>
+                                <Label Text="Day: " TextColor="#3D0A0A" FontSize="18" VerticalOptions="Center"/>
+                                <Label Text="{Binding Day, StringFormat='{}{0:dd/MM}'}" TextColor="#3D0A0A" FontSize="18" VerticalOptions="Center"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-
-            <controls:FloatingActionButton x:Name="FAB" 
-                                            RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=-90}"
-                                            RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=-120}"
+        </ScrollView>
+        <controls:FloatingActionButton x:Name="FAB" 
+                                            RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=-100}"
+                                            RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=-100}"
                                             HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
                                         HeightRequest="100" WidthRequest="90" Clicked="FAB_Clicked"
                                         Image="plus.png" ButtonColor="#3D0A0A"/>
-        </RelativeLayout>
-    </ScrollView>
+    </RelativeLayout>
+
 </ContentPage>

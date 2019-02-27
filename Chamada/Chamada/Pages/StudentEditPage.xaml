@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Xfx;assembly=Xfx.Controls"
+             x:Class="Chamada.Pages.StudentEditPage">
+    <ContentPage.Content>
+        <StackLayout Margin="10">
+            <controls:XfxEntry x:Name="EntryEdit" HorizontalOptions="FillAndExpand" Placeholder="Edit student name"/>
+            <Button x:Name="btnSave" HorizontalOptions="FillAndExpand" TextColor="White"
+                    Text="Save" Clicked="btnSave_Clicked" BackgroundColor="#3D0A0A"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

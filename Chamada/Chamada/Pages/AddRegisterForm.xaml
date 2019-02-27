@@ -1,36 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
-             
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"             
              x:Class="Chamada.Pages.AddRegisterForm">
-    <StackLayout Margin="10" VerticalOptions="FillAndExpand">
-        <Label x:Name="lblData" Text="Selecione uma data" TextColor="#3D0A0A" FontSize="18"
-               HorizontalOptions="CenterAndExpand" VerticalOptions="Start"/>
-        <DatePicker HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Format="dd/MM/yyyy"/>
-        <ScrollView>
-            <ListView x:Name="lvStudentsRegister" HasUnevenRows="True" SelectionMode="None" SeparatorVisibility="None">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                                <Label Text="{Binding Name}" VerticalOptions="Center"/>
-                                <controls:CheckBox x:Name="Presence" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </ScrollView>
-        <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand">
+    <StackLayout Margin="10">
+        <Label TextColor="#3D0A0A" Text="Select a date" HorizontalOptions="Center"/>
+        <DatePicker x:Name="dpClassDate" Format="dd/MMM" TextColor="#3D0A0A" HorizontalOptions="Center"/>
+        <Label TextColor="#3D0A0A" Text="Select the absent students" HorizontalOptions="Center"/>
+        <ListView x:Name="lvStudentsRegister" HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{Binding Name}"/>
+                            <controls:CheckBox HorizontalOptions="EndAndExpand" CheckedChanged="OnSelection"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>            
+        </ListView>
+        
+        <StackLayout Orientation="Horizontal">
             <Button 
-                        x:Name="SaveButton" HorizontalOptions="FillAndExpand"
-                        Text="Continue" TextColor="White" BorderColor="Transparent" VerticalOptions="EndAndExpand" BackgroundColor="#3D0A0A"
-                        Clicked="SaveButton_Clicked"/>
-            <Button 
-                        x:Name="CloseButton" HorizontalOptions="FillAndExpand"
-                        Text="Cancel" TextColor="White" BorderColor="Transparent" VerticalOptions="EndAndExpand" BackgroundColor="Gray"
+                        x:Name="btnClose" HorizontalOptions="FillAndExpand"
+                        Text="Cancel" TextColor="White" BorderColor="Transparent" BackgroundColor="Gray"
                         Clicked="CloseButton_Clicked" />
+            <Button 
+                        x:Name="btnContinue" HorizontalOptions="FillAndExpand"
+                        Text="Continue" TextColor="White" BorderColor="Transparent" BackgroundColor="#3D0A0A"
+                        Clicked="SaveButton_Clicked"/>            
         </StackLayout>
-    </StackLayout>
+    </StackLayout>    
 </ContentPage>

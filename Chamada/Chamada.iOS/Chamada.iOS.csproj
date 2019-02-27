@@ -28,6 +28,7 @@
     <MtouchArch>x86_64</MtouchArch>
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
+    <OptimizePNGs>true</OptimizePNGs>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -88,6 +89,9 @@
     <CodesignProvision>Automatic:AppStore</CodesignProvision>
     <CodesignKey>iPhone Distribution</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon_Vup_1.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Database\SQLiteDb.cs" />
@@ -184,5 +188,14 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\black_delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\black_edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="icon_Vup_1.ico" />
   </ItemGroup>
 </Project>

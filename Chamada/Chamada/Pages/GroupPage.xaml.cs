@@ -26,7 +26,7 @@ namespace Chamada.Pages
 
             Children.Add(new RegisterPage(_group));
             Children.Add(new StudentsPage(_group));
-            Children.Add(new GradesPage(_group));
+            
 
 		}
 
@@ -34,17 +34,6 @@ namespace Chamada.Pages
         {
             base.OnAppearing();
             Title = _group.Name;
-        }
-
-        private void edit_Clicked(object sender, EventArgs e)
-        {
-            //TODO implement the editing page for the group
-        }
-
-        private void delete_Clicked(object sender, EventArgs e)
-        {
-            _connection.DeleteAsync(_group);
-            Navigation.PopAsync();
         }
     }
 }

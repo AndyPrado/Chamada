@@ -1,66 +1,47 @@
 ﻿using Chamada.Database;
 using Chamada.Models;
-using Chamada.Pages;
 using SQLite;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using Xamarin.Forms;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Chamada
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+namespace Chamada.Pages
 {
-    public partial class MainPage : ContentPage
-    {
+	[XamlCompilation(XamlCompilationOptions.Compile)]
+	public partial class DeleteGroup : ContentPage
+	{
         private SQLiteAsyncConnection _connection;
         public ObservableCollection<Group> _groups { get; set; }
 
-        public MainPage()
-        {
-            InitializeComponent();
-            _connection = DependencyService.Get<ISQLiteDb>().GetConnection();            
-        }        
+        public DeleteGroup ()
+		{
+			InitializeComponent ();
+            _connection = DependencyService.Get<ISQLiteDb>().GetConnection();
+            
+        }
 
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
-            LoadGroups();            
+            await CreateTables();
+            LoadGroups();
 
             base.OnAppearing();
         }
 
-        private void FAB_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PushModalAsync(new Pages.AddGroupForm(new Group()));
-        }
-
-        private void groupList_ItemTapped(object sender, ItemTappedEventArgs e)
-        {
-            Group tappedGroup = (Group)((ListView)sender).SelectedItem;
-            Navigation.PushAsync(new Pages.GroupPage(tappedGroup));
-        }
-
-        public void OnEdit(object sender, EventArgs e)
-        {
-           //Navigation.PushAsync(new EditGroups());
-
-            Group itemToEdit = ((sender as MenuItem).BindingContext as Group);
-            Navigation.PushModalAsync(new EditGroupFrom(itemToEdit));
-        }
-
-        public void OnDelete(object sender, EventArgs e)
-        {
-            //Navigation.PushAsync(new DeleteGroup());
-            Group itemToDelete = ((sender as MenuItem).BindingContext as Group);
-            DeleteGroup(itemToDelete);
-        }
         public async void LoadGroups()
         {
-            await CreateTables();
-            var groups = await _connection.Table<Group>().OrderBy(g => g.Name)
-                .ToListAsync();
+            var groups = await _connection.Table<Group>().ToListAsync();
             _groups = new ObservableCollection<Group>(groups);
             groupList.ItemsSource = _groups;
         }
 
-        public async void DeleteGroup(Group group)
+        public async void DeleteGroups(Group group)
         {
             //open and load tables
             await CreateTables();
@@ -95,5 +76,26 @@ namespace Chamada
             await _connection.CreateTableAsync<Register>();
         }
 
+        private async void groupList_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var selectedGroup = (Group)((ListView)sender).SelectedItem;
+
+            var answer = await DisplayAlert("Confirmation", "Are you sure you want to delete this group?", "Yes", "No");
+
+            if (answer)
+            {
+                DeleteGroups(selectedGroup);                
+                
+                await Navigation.PopAsync();
+            }
+             
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+           
+                LoadGroups();
+        }
     }
 }

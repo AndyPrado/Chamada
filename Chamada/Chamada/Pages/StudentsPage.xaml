@@ -6,25 +6,29 @@
              Title="Students">
 
     <ContentPage.Content>
-        <StackLayout>
-            <StackLayout Orientation="Horizontal" Spacing="0" Margin="10" VerticalOptions="Start">
-                <entry:XfxEntry x:Name="NameEntry" Placeholder="Name" VerticalOptions="Start" HorizontalOptions="FillAndExpand"/>
-                <Button x:Name="btnSave" Text="Salvar" BackgroundColor="#3D0A0A" HorizontalOptions="End" VerticalOptions="Start" 
+        <ScrollView>
+            
+                <StackLayout Spacing="0" Margin="10" VerticalOptions="Start">
+                    <StackLayout Orientation="Horizontal">
+                        <entry:XfxEntry x:Name="NameEntry" Placeholder="Name"
+                                VerticalOptions="Start" HorizontalOptions="FillAndExpand"/>
+                        <Button x:Name="btnSave" Text="Save" BackgroundColor="#3D0A0A" HorizontalOptions="End"
+                        VerticalOptions="Start"
                     TextColor="White" FontSize="Small" CornerRadius="5" Clicked="btnSave_Clicked"/>
-            </StackLayout>            
-            <ScrollView>
-                <ListView x:Name="lvStudents" Margin="10,0">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <StackLayout>
-                                    <Label Text="{Binding Name}" TextColor="#3D0A0A" FontSize="18"  />
-                                </StackLayout>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </ScrollView>
-        </StackLayout>        
+                    </StackLayout>                                    
+                    <ListView x:Name="lvStudents" ItemTapped="lvStudents_ItemTapped">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" Margin="15,0">
+                                        <Label Text="{Binding Name}" TextColor="#3D0A0A" FontSize="18"  />
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+           
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

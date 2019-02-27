@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Xfx;assembly=Xfx.Controls"
+             x:Class="Chamada.Pages.RegisterHomeworkForm">
+    
+    <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="10">
+        
+        <controls:XfxEntry x:Name="EntryClasswork" Placeholder="Classwork"/>
+        <controls:XfxEntry x:Name="EntryECampus" Placeholder="E-campus"/>
+        <controls:XfxEntry x:Name="EntryHomework" Placeholder="Homework"/>      
+
+        <!--Botões-->
+        <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand">
+            <Button 
+                        x:Name="CloseButton" HorizontalOptions="FillAndExpand"
+                        Text="Cancel" TextColor="White" BorderColor="Transparent" BackgroundColor="Gray"
+                        Clicked="CloseButton_Clicked" />
+            <Button 
+                        x:Name="SaveButton" HorizontalOptions="FillAndExpand"
+                        Text="Save" TextColor="White" BorderColor="Transparent" BackgroundColor="#3D0A0A"
+                        Clicked="SaveButton_Clicked"/>            
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

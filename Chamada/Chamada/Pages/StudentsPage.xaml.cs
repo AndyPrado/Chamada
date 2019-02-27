@@ -49,9 +49,29 @@ namespace Chamada.Pages
 
         public async void LoadStudents()
         {
-            var students = await _connection.Table<Student>().Where(s => s.GroupId == _group.Id).ToListAsync();
+            var students = await _connection.Table<Student>().Where(s => s.GroupId == _group.Id).OrderBy(s => s.Name)
+                .ToListAsync();
+
             _students = new ObservableCollection<Student>(students);
             lvStudents.ItemsSource = _students;
         }
+
+        private async void lvStudents_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var studentSelected = (Student)((ListView)sender).SelectedItem;
+
+            var alert = await DisplayAlert("Edit or Delete?", "What do you want to do?", "Edit", "Delete");
+
+            if (alert)
+            {
+                await Navigation.PushModalAsync(new StudentEditPage(studentSelected));
+            }
+            else
+            {
+                await _connection.CreateTableAsync<Student>();
+                await _connection.DeleteAsync(studentSelected);
+                LoadStudents();
+            }
+        }        
     }
 }
